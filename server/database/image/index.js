@@ -5,5 +5,8 @@ const ImageSchema = new mongoose.Schema({
             required: true
         },
     }]
-});
+},
+    {
+        timestamps: true
+    });
 export const ImageModel = mongoose.model('Images', ImageSchema);
