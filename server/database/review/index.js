@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 const ReviewSchema = new mongoose.Schema({
     food: {type: mongoose.Types.ObjectId, ref: "Foods"},
     restaurant: {type: mongoose.Types.ObjectId, ref: "Restaurants"},

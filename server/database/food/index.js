@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 const FoodSchema = new mongoose.Schema({
     name: {
         type: String,

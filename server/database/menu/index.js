@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 const MenuSchema =  new mongoose.Schema({
    menus:[{
        name:{type:String, required:true},
@@ -16,4 +16,4 @@ const MenuSchema =  new mongoose.Schema({
     {
         timestamps: true
     });
-export const MenuModal = mongoose.model('Menu', MenuSchema);
+export const MenuModel = mongoose.model('Menu', MenuSchema);
