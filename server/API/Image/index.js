@@ -8,7 +8,7 @@ const log = debug('app');
 
 
 //Models
-import { ImageModel } from '../../database/allModel';
+import { ImageModel } from '../../database/allModels';
 
 const Router = express.Router();
 

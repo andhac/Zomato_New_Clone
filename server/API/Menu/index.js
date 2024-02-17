@@ -1,7 +1,7 @@
 import express from "express";
 
 //model
-import {MenuModel,ImageModel} from "../../database/allModel";
+import {MenuModel,ImageModel} from "../../database/allModels";
 
 const Router = express.Router()
 

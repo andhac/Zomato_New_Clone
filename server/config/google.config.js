@@ -1,5 +1,5 @@
 import googleOAuth from 'passport-google-oauth20';
-import {UserModel} from "../database/allModel";
+import {UserModel} from "../database/allModels";
 import jwt from "jsonwebtoken";
 require('dotenv').config();
 

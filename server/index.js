@@ -18,6 +18,9 @@ import Restaurant from './API/Restaurant';
 import Food from './API/Food';
 import Menu from './API/Menu';
 import Image from './API/Image';
+import Order from './API/Orders';
+import Reviews from './API/Reviews';
+import User from './API/User';
 
 
 //Passport Config
@@ -43,6 +46,10 @@ Zomato.use("/restaurant",Restaurant);
 Zomato.use("/food",Food);
 Zomato.use("/menu",Menu);
 Zomato.use("/image",Image);
+Zomato.use("/order",Order);
+Zomato.use("/reviews",Reviews);
+Zomato.use("/user",User);
+
 
 Zomato.listen(4000, async()=>{
     ConnectDB()

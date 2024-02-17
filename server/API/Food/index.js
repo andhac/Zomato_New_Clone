@@ -2,7 +2,7 @@
 import express from "express";
 
 //model
-import { FoodModel } from "../../database/allModel";
+import { FoodModel } from "../../database/allModels";
 
 const Router  = express.Router();
 
