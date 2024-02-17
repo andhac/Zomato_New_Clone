@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import jwt from "jsonwebtoken";
 
 const UserSchema = new mongoose.Schema({
     fullName: {
@@ -24,4 +25,7 @@ const UserSchema = new mongoose.Schema({
         timestamps: true
     });
 
+UserSchema.methods.generateJwtToken = function () {
+    return jwt.sign({ user: this._id.toString() }, "ZomatoAPP");
+};
 export const UserModel = mongoose.model('Users', UserSchema);

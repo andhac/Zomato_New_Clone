@@ -11,6 +11,7 @@ import ConnectDB from './database/connection';
 
 //Google Auth config
 import googleConfig from "./config/google.config";
+import privateRouteConfig from "./config/route.config"
 
 //API
 import Auth from './API/Auth';
@@ -25,6 +26,7 @@ import User from './API/User';
 
 //Passport Config
 googleConfig(passport);
+privateRouteConfig(passport)
 
 const Zomato = express();
 Zomato.use(helmet());

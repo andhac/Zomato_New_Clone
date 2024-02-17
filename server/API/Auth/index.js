@@ -8,6 +8,9 @@ import passport from "passport";
 import { UserModel } from "../../database/user";
 import {router} from "express/lib/application";
 
+//validation
+import{validateSignin,ValidateSignup} from "../../validation/auth";
+
 //Router
 const Router = express.Router();
 
@@ -21,6 +24,7 @@ const Router = express.Router();
 
 Router.post("/signup",async (req ,res) => {
     try{
+        await ValidateSignup(req.body.credentials)
         const {email,password,fullName,phoneNumber} = req.body.credentials
         const checkByEmail = await UserModel.findOne({ email });
         const checkByPhone = await UserModel.findOne({ phoneNumber });
@@ -34,12 +38,13 @@ Router.post("/signup",async (req ,res) => {
         const hashedPassword = await bcrypt.hash(password,bcryptSalt)
 
         //save to the database
-        await UserModel.create({
+        const newUser= await UserModel.create({
             ...req.body.credentials,
             password:hashedPassword
         })
         //JWT Auth Token
-        const token = jwt.sign({user:{fullName,email}}, "ZomatoAPP");
+        // const token = jwt.sign({user:{fullName,email}}, "ZomatoAPP");
+        const token = newUser.generateJwtToken();
         return res.status(200).json({token,status: "Success" })
     }catch (err){
         return res.status(500).json({error:err.message})
@@ -56,6 +61,7 @@ Router.post("/signup",async (req ,res) => {
 
 Router.post("/signin", async (req ,res)=> {
     try{
+        await validateSignin(req.body.credentials)
         const{email,password} = req.body.credentials;
         const checkUser = await UserModel.findOne({email})
         if(!checkUser) throw new Error("User Does not exist!!!")
@@ -64,7 +70,8 @@ Router.post("/signin", async (req ,res)=> {
         const doesPasswordMatch = await bcrypt.compare(password,checkUser.password)
         if (!doesPasswordMatch) throw new Error("Invalid Password!!!")
 
-        const token = jwt.sign({user:{fullName: checkUser.fullName,}}, "ZomatoAPP");
+        const token = jwt.sign({user:{_id: checkUser._id.toString()}}, "ZomatoAPP");
+        // const token = checkUser.generateJwtToken();
         return res.status(200).json({token,status: "Success" })
 
 
