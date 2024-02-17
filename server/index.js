@@ -14,6 +14,11 @@ import googleConfig from "./config/google.config";
 
 //API
 import Auth from './API/Auth';
+import Restaurant from './API/Restaurant';
+import Food from './API/Food';
+import Menu from './API/Menu';
+import Image from './API/Image';
+
 
 //Passport Config
 googleConfig(passport);
@@ -34,6 +39,10 @@ Zomato.use(session({
 
 //Application Route
 Zomato.use("/auth",Auth);
+Zomato.use("/restaurant",Restaurant);
+Zomato.use("/food",Food);
+Zomato.use("/menu",Menu);
+Zomato.use("/image",Image);
 
 Zomato.listen(4000, async()=>{
     ConnectDB()

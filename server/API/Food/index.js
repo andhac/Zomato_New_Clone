@@ -2,9 +2,10 @@
 import express from "express";
 
 //model
-import {FoodModel} from "../../database/allModel";
+import { FoodModel } from "../../database/allModel";
 
 const Router  = express.Router();
+
 /*
 * Route          /r/:_id
 * Description     Get all food based on particular restaurant
@@ -46,4 +47,4 @@ Router.get("/category", async (req ,res)=>{
 
 })
 
-export default Router()
+export default Router;
