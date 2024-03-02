@@ -1,10 +1,6 @@
 //Libraries
 import express from 'express';
-import AWS from 'aws-sdk';
 import multer from 'multer';
-import debug from 'debug';
-const log = debug('app');
-
 
 
 //Models
