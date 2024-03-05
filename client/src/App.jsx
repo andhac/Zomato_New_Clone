@@ -12,6 +12,7 @@ function App() {
   return (
    <>
        <HomeHoc component={HomePage} path = "/"/>
+       <HomeHoc component={HomePage} path = "/:type"/>
 </>
   )
 }
