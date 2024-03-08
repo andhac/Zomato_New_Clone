@@ -3,12 +3,12 @@ import React from 'react';
 const DeliverySmCard = ({ image, title} ) => {
     return (
         <>
-            <div className="lg:hidden bg-white shadow rounded-md w-24 md:w-56">
-                <div className="w-full h-full h-24">
-                    <img className='w-full h-full object-contain object-center rounded-t-md' src={image} alt={title}/>
+            <div className="lg:hidden bg-white rounded-full w-24 md:w-56 flex flex-wrap mx-3">
+                <div className="w-full  h-24">
+                    <img className='w-full  object-contain object-center rounded-full' src={image} alt={title}/>
                 </div>
                 <div>
-                    <h3 className='text-sm my-1 text-center font-light'>{title}</h3>
+                    <h3 className='text-md mt-3 text-center font-light'>{title}</h3>
                 </div>
             </div>
         </>

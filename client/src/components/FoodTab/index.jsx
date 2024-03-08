@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { useParams, Link } from 'react-router-dom'
 import { RiShoppingBag3Line } from'react-icons/ri'
-import {IoFastFoodOutline, IoNutritionOutline } from 'react-icons/io5'
+import {IoFastFoodOutline } from 'react-icons/io5'
 import { BiDrink } from 'react-icons/bi'
 import classNames from "classnames";
 const MobileTab = () =>{
@@ -27,7 +27,7 @@ const MobileTab = () =>{
 
     return(
         <>
-            <div className='lg:hidden bg-whites shadow-lg  fixed bottom-0 z-10 w-full flex items-center justify-between md:justify-evenly text-gray-500 border'>
+            <div className='lg:hidden bg-white shadow-lg  fixed bottom-0 z-10 w-full flex items-center justify-between md:justify-evenly text-gray-500 border'>
                 {allTypes.map((items) => (
                      // <Link to={`/${items.id}`} className='w-1/4 '>
                      //     <div className={

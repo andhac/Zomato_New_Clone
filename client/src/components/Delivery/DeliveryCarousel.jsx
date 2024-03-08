@@ -83,7 +83,7 @@ const DeliveryCarousel = () => {
     return (
         <div>
         <h1 className='text-xl lg:text-4xl mb-10 font-semibold'>Inspiration for your first order</h1>
-            <div className ='lg:hidden flex gap-3 lg:gap-0 flex-wrap justify-between '>
+            <div className ='lg:hidden flex gap-3 lg:gap-0 flex-wrap  '>
                 {categories.map((food) => (
                     <DeliveryCategory {...food}/>
                 ))}
