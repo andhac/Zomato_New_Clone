@@ -1,19 +1,18 @@
-import React ,{useState} from 'react';
+import React, {useState} from 'react';
 
 //Component
-import DeliveryCarousel from './DeliveryCarousel';
+import DiningCarousel from "./DiningCarousel";
 import RestaurantCard from "../RestaurantCard";
-
-const Delivery = () => {
+const Dining = () => {
     const [restaurantList, ] = useState([
         {
             _id:"123456",
             image: {
-               images:[
-                   {
-                       location: "https://b.zmtcdn.com/data/pictures/chains/0/550/9361ee4d0e18519da526b87f81f067ae_o2_featured_v2.jpg?output-format=webp"
-                   }
-               ]
+                images:[
+                    {
+                        location: "https://b.zmtcdn.com/data/pictures/chains/0/550/9361ee4d0e18519da526b87f81f067ae_o2_featured_v2.jpg?output-format=webp"
+                    }
+                ]
             },
             name: "Haldiram's",
             cuisine:  ["SouthIndian", "NorthIndian" , "Gujrati"],
@@ -106,9 +105,12 @@ const Delivery = () => {
     ])
     return (
         <>
-            <DeliveryCarousel/>
+            <h1 className='text-xl my-4 md:my-8 md:text-3xl md:font-semibold'>
+                Dine-Out Restaurant in Agra
+            </h1>
+            <DiningCarousel/>
             <h1 className='text-xl mt-4 mb-2 md:mt-8 md:text-3xl md:font-semibold'>
-                Delivery Restaurant in Agra
+            Trending Dining Restaurant in Agra
             </h1>
             <div className='flex justify-between flex-wrap  mt-5'>
                 {restaurantList.map((restaurant)=> (
@@ -119,4 +121,4 @@ const Delivery = () => {
     );
 };
 
-export default Delivery;
+export default Dining;
