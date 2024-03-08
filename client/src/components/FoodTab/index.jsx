@@ -4,7 +4,6 @@ import { RiShoppingBag3Line } from'react-icons/ri'
 import {IoFastFoodOutline, IoNutritionOutline } from 'react-icons/io5'
 import { BiDrink } from 'react-icons/bi'
 import classNames from "classnames";
-import {type} from "@testing-library/user-event/dist/type";
 const MobileTab = () =>{
    const [allTypes] = useState([
        {
@@ -58,25 +57,25 @@ const MobileTab = () =>{
 const LargeTab = () =>{
     const [allTypes] = useState([
         {
-            id:"delivery",
-            imageDefault: "https://b.zmtcdn.com/data/o2_assets/246bbd71fbba420d5996452be3024d351616150055.png",
-           imageActive:"https://b.zmtcdn.com/data/o2_assets/c0bb85d3a6347b2ec070a8db694588261616149578.png",
-            name:"Delivery",
-            activeBgColor: "yellow",
-        },
-        {
             id:"dining",
             imageDefault:"https://b.zmtcdn.com/data/o2_assets/78d25215ff4c1299578ed36eefd5f39d1616149985.png",
             imageActive:"https://b.zmtcdn.com/data/o2_assets/30fa0a844f3ba82073e5f78c65c18b371616149662.png",
             name:"Dining Out",
-            activeBgColor: "blue",
+            activeBgColor: "bg-blue-100",
+        },
+        {
+            id:"delivery",
+            imageDefault: "https://b.zmtcdn.com/data/o2_assets/246bbd71fbba420d5996452be3024d351616150055.png",
+            imageActive:"https://b.zmtcdn.com/data/o2_assets/c0bb85d3a6347b2ec070a8db694588261616149578.png",
+            name:"Delivery",
+            activeBgColor: "bg-yellow-100",
         },
         {
             id:"night",
             imageActive: "https://b.zmtcdn.com/data/o2_assets/855687dc64a5e06d737dae45b7f6a13b1616149818.png",
             imageDefault:"https://b.zmtcdn.com/data/o2_assets/01040767e4943c398e38e3592bb1ba8a1616150142.png",
             name:"Night Life",
-            activeBgColor: "yellow"
+            activeBgColor: "bg-green-100"
         },
 
     ]);
@@ -105,7 +104,7 @@ const LargeTab = () =>{
                             {/*</div>*/}
                             <div className={classNames("w-16 h-16 p-4 rounded-full",
                                 {
-                                    [`bg-${item.activeBgColor}-100`]: type === item.id,
+                                   [item.activeBgColor]: type === item.id,
                                     "bg-gray-100": type !== item.id
                                 }
                             )}>
