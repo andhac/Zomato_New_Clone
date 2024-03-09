@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 //Component
 import NightLifeCarousel from "./NightLifeCarousel";
-// import RestaurantCard from "../RestaurantCard";
+import RestaurantCard from "../RestaurantCard";
 import {IoMdArrowDropright} from "react-icons/io";
 const NightLife = () => {
     const [restaurantList, ] = useState([
@@ -41,11 +41,11 @@ const NightLife = () => {
             <h1 className='text-xl mt-4 mb-2 md:mt-8 md:text-3xl md:font-semibold'>
                 Nightlife Restaurants in Agra
             </h1>
-            {/*<div className='flex justify-between flex-wrap  mt-5'>*/}
-            {/*    {restaurantList.map((restaurant)=> (*/}
-            {/*        <RestaurantCard{...restaurant} key={restaurant._id} />*/}
-            {/*    ))}*/}
-            {/*</div>*/}
+            <div className='flex justify-between flex-wrap  mt-5'>
+                {restaurantList.map((restaurant)=> (
+                    <RestaurantCard{...restaurant} key={restaurant._id} />
+                ))}
+            </div>
         </>
     );
 };
