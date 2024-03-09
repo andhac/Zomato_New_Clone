@@ -23,7 +23,7 @@ const Delivery = () => {
             restaurantReviewValue: 4.1,
         },
         {
-            _id:"123456",
+            _id:"1234567",
             image: {
                 images:[
                     {
@@ -39,7 +39,7 @@ const Delivery = () => {
             restaurantReviewValue: 4.1,
         },
         {
-            _id:"123456",
+            _id:"1234568",
             image: {
                 images:[
                     {
@@ -55,7 +55,7 @@ const Delivery = () => {
             restaurantReviewValue: 4.1,
         },
         {
-            _id:"123456",
+            _id:"1234569",
             image: {
                 images:[
                     {
@@ -71,7 +71,7 @@ const Delivery = () => {
             restaurantReviewValue: 4.1,
         },
         {
-            _id:"123456",
+            _id:"1234560",
             image: {
                 images:[
                     {
@@ -87,7 +87,7 @@ const Delivery = () => {
             restaurantReviewValue: 4.1,
         },
         {
-            _id:"123456",
+            _id:"1234561",
             image: {
                 images:[
                     {
