@@ -10,6 +10,7 @@ import RestaurantHoc from "./HOC/Restaurant.Hoc";
 //Pages
 import HomePage from "./pages/HomePage";
 import RestaurantPage from "./pages/RestaurantPage";
+import Overview from "./components/Restaurant/Overview";
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
        <HomeHoc exact component={HomePage} path = "/"/>
        <HomeHoc exact component={HomePage} path = "/:type"/>
        <RestaurantHoc exact component={RestaurantPage} path = "/restaurant/:id"/>
-       <RestaurantHoc path="/restaurant/:id/overview" component={HomePage}/>
+       <RestaurantHoc path="/restaurant/:id/overview" component={Overview}/>
         <RestaurantHoc path="/restaurant/:id/order-online" component={HomePage}/>
        <RestaurantHoc path="/restaurant/:id/menu" component={HomePage}/>
        <RestaurantHoc path="/restaurant/:id/reviews" component={HomePage}/>
