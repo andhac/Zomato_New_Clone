@@ -5,6 +5,7 @@ import {BiTimeFive} from "react-icons/bi";
 //Components
 import FloatMenuBtn from "./OrderOnline/FloatMenuBtn";
 import MenuListContainer from "./OrderOnline/MenuListContainer";
+import FoodList from "./OrderOnline/FoodList";
 
 
 
@@ -12,11 +13,61 @@ const OrderOnline = () => {
     const [menu, setMenu] =useState([
         {
             name: "Holi Specials",
-            items: ["Item 1", "Item 2", "Item 3"],
+            items: [
+                {
+                    name:"Maida Gunjia",
+                    image: "https://b.zmtcdn.com/data/dish_photos/198/e5c170b95f2c7a78713e3de18a996198.jpeg",
+                    isAddedToCart: false,
+                    rating: 45,
+                    description: "",
+                    price: ""
+                }
+            ],
         },
         {
             name: "Restaurant",
-            items: []
+            items: [
+                {
+                    name:"Choley Bhature",
+                    image:"https://b.zmtcdn.com/data/dish_photos/7e1/2774be09bd6b1b2f45508ceb350cb7e1.png",
+                    isAddedToCart: false,
+                    rating: 59,
+                    description: "Haldiram's Chole Bhature is a beloved North Indian dish featuring crispy fried bhature bread with spiced chickpeas ",
+                    price: "190"
+                },
+                {
+                    name:"Choley Bhature",
+                    image:"https://b.zmtcdn.com/data/dish_photos/7e1/2774be09bd6b1b2f45508ceb350cb7e1.png",
+                    isAddedToCart: false,
+                    rating: 59,
+                    description: "Haldiram's Chole Bhature is a beloved North Indian dish featuring crispy fried bhature bread with spiced chickpeas ",
+                    price: "190"
+                },
+                {
+                    name:"Choley Bhature",
+                    image:"https://b.zmtcdn.com/data/dish_photos/7e1/2774be09bd6b1b2f45508ceb350cb7e1.png",
+                    isAddedToCart: true,
+                    rating: 59,
+                    description: "Haldiram's Chole Bhature is a beloved North Indian dish featuring crispy fried bhature bread with spiced chickpeas ",
+                    price: "190"
+                },
+                {
+                    name:"Choley Bhature",
+                    image:"https://b.zmtcdn.com/data/dish_photos/7e1/2774be09bd6b1b2f45508ceb350cb7e1.png",
+                    isAddedToCart: true,
+                    rating: 59,
+                    description: "Haldiram's Chole Bhature is a beloved North Indian dish featuring crispy fried bhature bread with spiced chickpeas ",
+                    price: "190"
+                },
+                {
+                    name:"Choley Bhature",
+                    image:"https://b.zmtcdn.com/data/dish_photos/7e1/2774be09bd6b1b2f45508ceb350cb7e1.png",
+                    isAddedToCart: false,
+                    rating: 59,
+                    description: "Haldiram's Chole Bhature is a beloved North Indian dish featuring crispy fried bhature bread with spiced chickpeas ",
+                    price: "190"
+                },
+            ]
         },
         {
             name: "Sweets",
@@ -54,9 +105,9 @@ const OrderOnline = () => {
                         </h4>
                     </div>
                     <section className='flex h-screen overflow-y-scroll flex-col gap-3 md:gap-5'>
-                        {/*{menu.map((item , index)=>{*/}
-                        {/*    <FoodList key={index} {...item} />*/}
-                        {/*})}*/}
+                        {menu.map((item , index)=>(
+                            <FoodList key={index} {...item} index={index} />
+                        ))}
                     </section>
                 </div>
             </div>
