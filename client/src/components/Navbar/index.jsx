@@ -5,11 +5,14 @@ import {IoMdArrowDropdown,IoMdArrowDropup} from "react-icons/io";
 import {RiSearch2Line} from "react-icons/ri";
 import {useNavigate} from 'react-router-dom'
 
+//Components
+import Signup from "../Auth/SignUp";
+import SignIn from "../Auth/SignIn";
 
-const MobileNav = () =>{
+
+const MobileNav = ({SignIn , SignUp}) =>{
     const [isDropDownOpen, setIsDropDownOpen] = useState(false);
     const [user, setUser] = useState({
-        fullName: "Sahil"
     });
 
     return(
@@ -36,8 +39,8 @@ const MobileNav = () =>{
                             <FaUserAlt className='w-full h-full'/>
                             {isDropDownOpen && (
                                 <div className='absolute shadow-lg py-3 -bottom-20 -right-4 w-full bg-white z-20 flex flex-col gap-2'>
-                                    <button>Sign In</button>
-                                    <button>Sign Up</button>
+                                    <button onClick={SignIn} >Sign In</button>
+                                    <button onClick={SignUp}>Sign Up</button>
                                 </div>
                             )}
                         </span>
@@ -48,7 +51,7 @@ const MobileNav = () =>{
     )
 }
 
-const LargeNav = () =>{
+const LargeNav = ({SignIn , SignUp}) =>{
     const [isDropDownOpen, setIsDropDownOpen] = useState(false);
     const [user, setUser] = useState({
     });
@@ -90,8 +93,8 @@ const LargeNav = () =>{
                         </div>
                     ) : (
                         <div className='flex gap-4'>
-                            <button className='text-gray-500 text-lg hover:text-gray-800'>Login</button>
-                            <button className='text-gray-500 text-lg hover:text-gray-800'>Sign Up</button>
+                            <button onClick={SignIn} className='text-gray-500 text-lg hover:text-gray-800'>Login</button>
+                            <button onClick={SignUp} className='text-gray-500 text-lg hover:text-gray-800'>Sign Up</button>
                         </div>
                     )}
                 </div>
@@ -102,11 +105,19 @@ const LargeNav = () =>{
 
 
 const Navbar = () => {
+    const [openSignIn,setOpenSignIn] = useState(false)
+    const [openSignUp, setOpenSignUp] = useState(false)
+    const openSignInModel = () => setOpenSignIn(true)
+    const openSignUpModel = () => setOpenSignUp(true)
+
     return (
         <>
+            <SignIn isOpen={openSignIn} setIsOpen={setOpenSignIn}/>
+            <Signup isOpen={openSignUp} setIsOpen={setOpenSignUp}/>
+
             <nav className=" p-4 flex bg-white shadow-md  lg:shadow-none w-full items-center ">
-                <MobileNav/>
-                <LargeNav/>
+                <MobileNav SignIn={openSignInModel} SignUp={openSignUpModel}/>
+                <LargeNav SignIn={openSignInModel} SignUp={openSignUpModel}/>
             </nav>
         </>
     );
