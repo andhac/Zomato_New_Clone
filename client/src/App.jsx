@@ -12,6 +12,9 @@ import HomePage from "./pages/HomePage";
 import RestaurantPage from "./pages/RestaurantPage";
 import Overview from "./components/Restaurant/Overview";
 import OrderOnline from "./components/Restaurant/OrderOnline";
+import Reviews from "./components/Restaurant/Reviews/Reviews";
+import Menu from "./components/Restaurant/Menu/Menu";
+import Photos from "./components/Restaurant/Photos/Photos";
 
 
 function App() {
@@ -24,9 +27,9 @@ function App() {
        <RestaurantHoc exact component={RestaurantPage} path = "/restaurant/:id"/>
        <RestaurantHoc path="/restaurant/:id/overview" component={Overview}/>
         <RestaurantHoc path="/restaurant/:id/order-online" component={OrderOnline}/>
-       <RestaurantHoc path="/restaurant/:id/menu" component={HomePage}/>
-       <RestaurantHoc path="/restaurant/:id/reviews" component={HomePage}/>
-       <RestaurantHoc path="/restaurant/:id/photos" component={HomePage}/>
+       <RestaurantHoc path="/restaurant/:id/menu" component={Menu}/>
+       <RestaurantHoc path="/restaurant/:id/reviews" component={Reviews}/>
+       <RestaurantHoc path="/restaurant/:id/photos" component={Photos}/>
 
 </>
   )
