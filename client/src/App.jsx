@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css"
 //HOC
 import HomeHoc from "./HOC/Home.HOC";
 import RestaurantHoc from "./HOC/Restaurant.Hoc";
+import CheckoutHOC from "./HOC/Checkout.HOC";
 
 //Pages
 import HomePage from "./pages/HomePage";
@@ -15,6 +16,7 @@ import OrderOnline from "./components/Restaurant/OrderOnline";
 import Reviews from "./components/Restaurant/Reviews/Reviews";
 import Menu from "./components/Restaurant/Menu/Menu";
 import Photos from "./components/Restaurant/Photos/Photos";
+import CheckOutPage from "./pages/CheckOutPage";
 
 
 function App() {
@@ -30,7 +32,7 @@ function App() {
        <RestaurantHoc path="/restaurant/:id/menu" component={Menu}/>
        <RestaurantHoc path="/restaurant/:id/reviews" component={Reviews}/>
        <RestaurantHoc path="/restaurant/:id/photos" component={Photos}/>
-
+       <CheckoutHOC path="/checkout/orders" component={CheckOutPage}/>
 </>
   )
 }

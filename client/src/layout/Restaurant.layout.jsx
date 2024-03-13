@@ -9,6 +9,7 @@ import ImageGrid from "../components/Restaurant/ImageGrid";
 import RestaurantInfo from "../components/Restaurant/RestaurantInfo";
 import InfoBtn from "../components/Restaurant/InfoBtn";
 import Tabs from "../components/Restaurant/Tabs";
+import CartContainer from "../components/Cart/CartContainer";
 
 const RestaurantLayout = ({children}) => {
     const [restaurant ] = useState({
@@ -56,7 +57,7 @@ const RestaurantLayout = ({children}) => {
                 </div>
                 {children}
             </div>
-
+            <CartContainer/>
 
         </>
     );
