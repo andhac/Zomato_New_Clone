@@ -48,4 +48,15 @@ Router.get("/image/:_id", async (req,res)=>{
         return res.status(500).json({error:err.message})
     }
 })
+
+Router.post("/" , async (req,res) => {
+    try{
+        const addMenu =await MenuModel.create(req.body)
+        return res.status(200).json(addMenu);
+    }catch (err){
+        return res.status(500).json({error:err.message})
+    }
+})
+
+
 export default Router;

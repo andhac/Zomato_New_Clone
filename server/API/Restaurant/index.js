@@ -78,4 +78,13 @@ Router.get("/search/:searchString", async (req, res)=>{
     }
 })
 
+Router.post("/", async(req, res) => {
+    try {
+        const addRestaurant = await RestaurantModel.create(req.body)
+        return res.status(200).json(addRestaurant)
+    }catch (err) {
+        return res.status(500).json({error:err.message});
+    }
+})
+
 export default Router;

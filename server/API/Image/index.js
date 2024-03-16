@@ -47,4 +47,26 @@ Router.post("/", upload.single("file"), async(req,res) => {
     }
 })
 
+Router.post("/multi", upload.array("file"), async(req,res) => {
+    try{
+        const files =req.files;
+        const locations = await Promise.all(files.map(async file =>{
+            //s3 bucket options
+            const bucketOptions = {
+                Bucket:"zomato-images556",
+                Key:file.originalname,
+                Body:file.buffer,
+                ContentType:file.mimeType,
+                ACL:"public-read",
+            }
+            const uploadImage = await s3Upload( bucketOptions);
+            return uploadImage.Location
+        }))
+        const saveImageToDB = await ImageModel.create({images: locations.map(location => ({location}))})
+        return res.status(200).json(saveImageToDB)
+
+    }catch (err){
+        return res.status(500).json({error:err.message})
+    }
+})
 export default Router;

@@ -49,7 +49,15 @@ Router.get("/category", async (req ,res)=>{
    }catch (err) {
        return res.status(500).json({error:err.message});
    }
+})
 
+Router.post("/" , async(req, res) => {
+    try{
+    const addFood = await FoodModel.create(req.body)
+        return res.status(200).json(addFood)
+    }catch (err) {
+        return res.status(500).json({error:err.message});
+    }
 })
 
 export default Router;
