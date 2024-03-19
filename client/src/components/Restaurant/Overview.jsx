@@ -1,10 +1,14 @@
-import React ,{useState} from 'react';
+import React ,{useState, useEffect} from 'react';
 import {Link, useParams} from "react-router-dom";
 import {IoMdArrowDropright} from "react-icons/io";
 import Slider from "react-slick";
 import ReactStars from "react-rating-stars-component";
 
 
+//Redux
+import{ useSelector, useDispatch} from "react-redux";
+import {getImage} from "../../redux/reducers/image/image.action";
+import {getReview} from "../../redux/reducers/review/review.action";
 //Components
 import {NextArrow, PrevArrow} from "../CarouselArrow";
 import MenuSimilarRestaurantCard from "./MenuSimilarRestaurantCard";
@@ -14,40 +18,30 @@ import MapView from "./MapView";
 
 const Overview = () => {
     const rupeeSign = "\u20B9";
-    const [menuimages , setMenuImages] = useState({
-        images: ["https://b.zmtcdn.com/data/menus/289/19167289/c255c12d44dd9c01333a14907cd39d43.jpg",
-        "https://b.zmtcdn.com/data/menus/289/19167289/744becbd3a5ed08dc39691239687669d.jpg",
-        "https://b.zmtcdn.com/data/menus/289/19167289/120b629e10137deea962aab9a868aff5.jpg",
-            "https://b.zmtcdn.com/data/menus/289/19167289/ccfa323cfcc5e7915ce54f7645a5d287.jpg",
-            "https://b.zmtcdn.com/data/menus/289/19167289/98983e12d8a14c7dc568a83509f4704e.jpg",
-            "https://b.zmtcdn.com/data/menus/289/19167289/18e282f38ee9e5af1e1cc6c15df1f2f5.jpg"
-        ]
+    const [menuImages , setMenuImages] = useState({
+        images: []
     })
-    const [reviews, setReviews] = useState([
-        {
-            isRestaurantReview: false,
-            createAt:"2024-01-01",
-            fullName: "John Doe",
-            reviewText: "Food is awesome"
-        },
-        {
-            isRestaurantReview: true,
-            createAt:"2024-08-01",
-            fullName: "John Doe",
-            reviewText: "Food is awesome",
-
-        },
-        {
-            isRestaurantReview: false,
-            createAt:"2024-02-01",
-            fullName: "John Doe",
-            reviewText: "Food is awesome"
-        }
-    ]);
-    const [cuisine, setCuisine] = useState(["Mordern Indian", "Bar Food"])
-    const averageCost = 200;
-
+    const [reviews, setReviews] = useState([]);
     const{id}  =useParams()
+
+    const reduxState = useSelector(
+        (globalState) => globalState.restaurant.selectedRestaurant.restaurant
+    );
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        if (reduxState){
+            dispatch(getImage(reduxState?.menuImages)).then((data) => {
+                const images = [];
+                data.payload.images.map(({ location }) => images.push(location));
+                setMenuImages(images);
+            });
+
+            dispatch(getReview(reduxState?._id)).then((data) => setReviews(data.payload.reviews))
+        }
+    },[reduxState])
+
+
     const settings = {
         dots: true,
         infinite: false,
@@ -93,11 +87,11 @@ const Overview = () => {
                         </Link>
                     </div>
                     <div className='flex- flex-wrap gap-3 my-4'>
-                        <MenuCollection menuTitle='menu' pages={menuimages.images.length} image={menuimages.images}/>
+                        <MenuCollection menuTitle='menu' pages={menuImages.length} image={menuImages}/>
                     </div>
                     <h4 className='text-lg font-medium my-4'>Cuisines</h4>
                     <div className='flex flex-wrap gap-2'>
-                        {cuisine.map((cuisineName, index)=>(
+                        {reduxState?.cuisine.map((cuisineName, index)=>(
                             <span key={index} className='border border-gray-500 text-blue-600 px-2 py-1 rounded-full'>
                                 {cuisineName}
                             </span>
@@ -105,7 +99,7 @@ const Overview = () => {
                     </div>
                     <div className='my-4'>
                         <h4 className='text-lg font-medium'>Average Cost</h4>
-                        <h6>{rupeeSign}{averageCost} for one order(approx.)</h6>
+                        <h6>{rupeeSign}{reduxState?.averageCost} for one order(approx.)</h6>
                         <small className='text-gray-500'>
                             Exclusive of applicable taxes and charges, if any
                         </small>

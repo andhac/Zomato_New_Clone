@@ -36,7 +36,6 @@ Router.get("/:resid",async ( req,res) => {
 Router.post("/new", async (req,res)=>{
     try{
         const {reviewData} = req.body;
-
         await ReviewModel.create({...reviewData})
         return res.json({reviews: "Successfully Created Review"})
     }catch (err){

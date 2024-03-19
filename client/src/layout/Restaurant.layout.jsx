@@ -43,7 +43,7 @@ const RestaurantLayout = ({children}) => {
             })
         })
     },[])
-
+    const cuisine = restaurant?.cuisine
     return (
         <>
             <Navbar/>
@@ -52,7 +52,7 @@ const RestaurantLayout = ({children}) => {
                 <RestaurantInfo name={restaurant?.name}
                                 restaurantRating={restaurant?.restaurantRating || 0}
                                 deliveryRating={restaurant?.deliveryRating || 0}
-                                cuisine={restaurant?.cuisine}
+                                cuisine={restaurant.cuisine?restaurant.cuisine.join(", "): ""}
                                 address={restaurant?.address}
                 />
                 <div className=' mx-auto  my-4 flex flex-wrap gap-3'>
