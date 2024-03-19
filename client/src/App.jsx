@@ -17,6 +17,7 @@ import Reviews from "./components/Restaurant/Reviews/Reviews";
 import Menu from "./components/Restaurant/Menu/Menu";
 import Photos from "./components/Restaurant/Photos/Photos";
 import CheckOutPage from "./pages/CheckOutPage";
+import Redirect from "./pages/Restaurant/Redirect";
 
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
    <>
        <HomeHoc exact component={HomePage} path = "/"/>
        <HomeHoc exact component={HomePage} path = "/:type"/>
-       <RestaurantHoc exact component={RestaurantPage} path = "/restaurant/:id"/>
+       <RestaurantHoc exact component={Redirect} path = "/restaurant/:id"/>
        <RestaurantHoc path="/restaurant/:id/overview" component={Overview}/>
         <RestaurantHoc path="/restaurant/:id/order-online" component={OrderOnline}/>
        <RestaurantHoc path="/restaurant/:id/menu" component={Menu}/>
