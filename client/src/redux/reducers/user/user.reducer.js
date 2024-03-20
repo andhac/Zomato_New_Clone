@@ -3,7 +3,7 @@ import {GET_USER, SELF, CLEAR_USER} from "./user.type";
 const initialState = {
     user: {}
 };
-;
+
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_USER:
