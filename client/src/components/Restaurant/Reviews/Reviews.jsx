@@ -1,19 +1,25 @@
-import React,{useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 //Components
 import ReviewCard from './ReviewCard';
 import AddReviewCard from './AddReviewCard';
 
+//Redux
+import {useDispatch, useSelector} from "react-redux";
+import {getReview} from "../../../redux/reducers/review/review.action";
+
 const Reviews = () => {
 
-    const[reviews,setReviews] = useState([
-        {
-            fullName:"John Doe",
-            isRestaurantReview: true,
-            createAt: "2024-04-01",
-            reviewText: "Awesom"
-        }
-    ])
+    const[reviews,setReviews] = useState([ ])
+
+    const reduxState = useSelector((globalState) => globalState.restaurant.selectedRestaurant.restaurant);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        reduxState && dispatch(getReview(reduxState?._id)).then((data) => {
+            setReviews(data.payload.reviews)
+        })
+    }, [reduxState]);
 
     return (
         <>
