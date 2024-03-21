@@ -8,6 +8,10 @@ import HomeHoc from "./HOC/Home.HOC";
 import RestaurantHoc from "./HOC/Restaurant.Hoc";
 import CheckoutHOC from "./HOC/Checkout.HOC";
 
+//Redux
+import{useDispatch} from "react-redux";
+import{getMySelf} from "./redux/reducers/user/user.action";
+
 //Pages
 import HomePage from "./pages/HomePage";
 import RestaurantPage from "./pages/RestaurantPage";
@@ -18,10 +22,14 @@ import Menu from "./components/Restaurant/Menu/Menu";
 import Photos from "./components/Restaurant/Photos/Photos";
 import CheckOutPage from "./pages/CheckOutPage";
 import Redirect from "./pages/Restaurant/Redirect";
+import {useEffect} from "react";
 
 
 function App() {
-
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getMySelf())
+    });
 
   return (
    <>

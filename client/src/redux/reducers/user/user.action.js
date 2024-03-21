@@ -21,7 +21,7 @@ export const getUser = (_id) => async (dispatch) => {
     }
 }
 
-export const getSelf = () => async (dispatch) => {
+export const getMySelf = () => async (dispatch) => {
     try{
         const User = await axios({
             method: "GET",

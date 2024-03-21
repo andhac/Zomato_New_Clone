@@ -22,14 +22,15 @@ const Router = express.Router();
 * Method          POST
 */
 
+
 Router.post("/signup",async (req ,res) => {
     try{
         await ValidateSignup(req.body.credentials)
         const {email,password,fullName,phoneNumber} = req.body.credentials
         const checkByEmail = await UserModel.findOne({ email });
-        const checkByPhone = await UserModel.findOne({ phoneNumber });
+        // const checkByPhone = await UserModel.findOne({ phoneNumber });
 
-        if (checkByEmail || checkByPhone){
+        if (checkByEmail){
             throw new Error("User is Already Exist")
         }
 
