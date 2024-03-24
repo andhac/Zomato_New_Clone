@@ -15,7 +15,7 @@ export default (passport)=>{
     passport.use(
         new jwtStrategy(option,async (jwt__payload,done)=>{
             try{
-                const doesUserExist = await UserModel.findById(jwt__payload.user);
+                const doesUserExist = await UserModel.findById(jwt__payload.user._id);
                 if(!doesUserExist) return done(null,false);
                 return done(null,doesUserExist)
             }catch (err){

@@ -1,21 +1,35 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ReactSimpleImageViewer from "react-simple-image-viewer";
-//Component
 
+//Redux
+import{useSelector,useDispatch} from "react-redux";
+import {getImage} from "../../../redux/reducers/image/image.action";
+//Component
 import PhotoCollection from "./PhotoCollection";
 
 const Photos = () => {
-    const[photos]=useState([
-        "https://b.zmtcdn.com/data/pictures/chains/9/19167289/b97da9ccc72f8addaf2129de2d78aa5c.jpg",
-        "https://b.zmtcdn.com/data/pictures/chains/9/19167289/dad538500f15f810efb501e1730581a3.jpg",
-        "https://b.zmtcdn.com/data/pictures/chains/9/19167289/972f2123baaa8fb75c6489baaba691d6.jpg",
-        "https://b.zmtcdn.com/data/pictures/chains/9/19167289/c4b0de974b843fa18b9c6e57f0a57590.jpg",
-        "https://b.zmtcdn.com/data/pictures/chains/9/19167289/33fdb5e66d443ac3742ffcaa6530dc32.jpg",
-        "https://b.zmtcdn.com/data/pictures/chains/9/19167289/1a1322bf9290da0369042b2adef3a7f5.jpg"
+    const dispatch = useDispatch()
+    const reduxState = useSelector((globalState) => globalState.restaurant.selectedRestaurant.restaurant)
+    const[photos , setPhotos]=useState([
+        // "https://b.zmtcdn.com/data/pictures/chains/9/19167289/b97da9ccc72f8addaf2129de2d78aa5c.jpg",
+        // "https://b.zmtcdn.com/data/pictures/chains/9/19167289/dad538500f15f810efb501e1730581a3.jpg",
+        // "https://b.zmtcdn.com/data/pictures/chains/9/19167289/972f2123baaa8fb75c6489baaba691d6.jpg",
+        // "https://b.zmtcdn.com/data/pictures/chains/9/19167289/c4b0de974b843fa18b9c6e57f0a57590.jpg",
+        // "https://b.zmtcdn.com/data/pictures/chains/9/19167289/33fdb5e66d443ac3742ffcaa6530dc32.jpg",
+        // "https://b.zmtcdn.com/data/pictures/chains/9/19167289/1a1322bf9290da0369042b2adef3a7f5.jpg"
     ]);
     const [isMenuOpen, setIsMenuOpen] =useState(false);
     const [currentImage, setCurrentImage] = useState(0);
 
+    useEffect(() => {
+        if (reduxState) {
+            dispatch(getImage(reduxState?.photos)).then((data) => {
+                const images = [];
+                data.payload.images.map(( {location} ) => images.push(location))
+                setPhotos(images)
+            })
+        }
+    }, [reduxState]);
     const closeViewer = () => setIsMenuOpen(false)
     const openViewer = () => setIsMenuOpen(true)
 

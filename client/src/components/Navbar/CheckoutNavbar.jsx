@@ -2,11 +2,11 @@ import React, {useState} from 'react';
 import {FaUserAlt} from "react-icons/fa";
 import {AiOutlineArrowLeft} from "react-icons/ai";
 
+//Redux
+import {useSelector, useDispatch} from "react-redux";
+
 const CheckoutNavbar = () => {
-    const [user] = useState({
-        fullName:"John Doe",
-        image:"https://b.zmtcdn.com/web/assets/2267aec184e096c98c46a1565a5563661664945464.png?fit=around%7C100%3A100&crop=100%3A100%3B%2A%2C%2A",
-    })
+    const reduxState = useSelector((globalState) => globalState.user.user)
     return (
         <>
             <nav className='p-4 flex bg-white shadow-md  w-full items-center'>
@@ -18,9 +18,10 @@ const CheckoutNavbar = () => {
                         </div>
                         <div className='flex items-center gap-3'>
                             <div className='border  border-gray-300 text-zomato-400 w-12 h-12 rounded-full'>
-                                <img src={user?.image} alt={user?.email} className='w-full h-full rounded-full object-cover'/>
+                                <img src="https://b.zmtcdn.com/web/assets/2267aec184e096c98c46a1565a5563661664945464.png?fit=around%7C100%3A100&crop=100%3A100%3B%2A%2C%2A"
+                                     alt={reduxState.user?.email} className='w-full h-full rounded-full object-cover'/>
                             </div>
-                            {user?.fullName}
+                            {reduxState.user?.fullName}
                         </div>
                     </div>
                 </div>

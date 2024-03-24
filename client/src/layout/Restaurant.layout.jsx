@@ -8,7 +8,7 @@ import {useParams} from "react-router-dom";
 import {getSpecificRestaurant} from "../redux/reducers/restaurant/restaurant.action";
 import {useDispatch} from "react-redux";
 import {getImage} from "../redux/reducers/image/image.action";
-
+import {getCart} from "../redux/reducers/cart/cart.action";
 //Component
 import Navbar from "../components/Navbar";
 import ImageGrid from "../components/Restaurant/ImageGrid";
@@ -42,6 +42,7 @@ const RestaurantLayout = ({children}) => {
 
             })
         })
+        dispatchEvent(getCart())
     },[])
     const cuisine = restaurant?.cuisine
     return (

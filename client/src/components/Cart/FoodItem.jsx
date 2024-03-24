@@ -1,12 +1,23 @@
 import React from 'react';
 import {BsTrashFill} from "react-icons/bs";
-const rupeeSign = "\u20B9";
+
+//redux
+import {useDispatch} from "react-redux";
+import {incrementCart, decrementCart,deleteCart} from "../../redux/reducers/cart/cart.action";
+
 const FoodItem = (props) => {
-    const deleteFoodFromCart = () => {}
+    const rupeeSign = "\u20B9";
+    const dispatch = useDispatch();
+    const deleteFoodFromCart = () => {
+        dispatch(deleteCart(props._id))
+    }
 
-    const increment = () => {};
+    const increment = () => dispatch(incrementCart(props._id));
 
-    const decrement = () => {};
+    const decrement = () => {
+        if(props.quantity === 1) return
+        dispatch(decrementCart(props._id))
+    };
 
     return (
         <>

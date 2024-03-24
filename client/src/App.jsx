@@ -1,4 +1,4 @@
-
+import {useEffect} from "react";
 import './App.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css"
@@ -14,7 +14,7 @@ import{getMySelf} from "./redux/reducers/user/user.action";
 
 //Pages
 import HomePage from "./pages/HomePage";
-import RestaurantPage from "./pages/RestaurantPage";
+// import RestaurantPage from "./pages/RestaurantPage";
 import Overview from "./components/Restaurant/Overview";
 import OrderOnline from "./components/Restaurant/OrderOnline";
 import Reviews from "./components/Restaurant/Reviews/Reviews";
@@ -22,18 +22,21 @@ import Menu from "./components/Restaurant/Menu/Menu";
 import Photos from "./components/Restaurant/Photos/Photos";
 import CheckOutPage from "./pages/CheckOutPage";
 import Redirect from "./pages/Restaurant/Redirect";
-import {useEffect} from "react";
+import GoogleAuth from "./pages/GoogleAuth";
 
 
 function App() {
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(getMySelf())
-    });
+        dispatch(getMySelf());
+    }, [localStorage]);
 
-  return (
+
+
+    return (
    <>
        <HomeHoc exact component={HomePage} path = "/"/>
+       <HomeHoc exact component={GoogleAuth} path={'google/:token'}/>
        <HomeHoc exact component={HomePage} path = "/:type"/>
        <RestaurantHoc exact component={Redirect} path = "/restaurant/:id"/>
        <RestaurantHoc path="/restaurant/:id/overview" component={Overview}/>

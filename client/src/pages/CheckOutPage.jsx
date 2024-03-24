@@ -19,6 +19,7 @@ const CheckOutPage = () => {
             address:"Office, New Delhi, India",
         }
     ]
+
     const foods =[
         {
             name:"Moong Dal (200g)",

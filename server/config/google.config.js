@@ -1,3 +1,4 @@
+
 import googleOAuth from 'passport-google-oauth20';
 import {UserModel} from "../database/allModels";
 import jwt from "jsonwebtoken";
@@ -24,7 +25,7 @@ export default (passport) =>{
                     const user =await UserModel.findOne({email:newUser.email})
                     if(user){
                         //generate Token
-                        const token = jwt.sign({user:{fullName: newUser.fullName, email: newUser.email}}, "ZomatoAPP");
+                        const token =user.generateJwtToken();
                         //return user
                         done(null, {user, token})
                     }
@@ -33,7 +34,7 @@ export default (passport) =>{
                         const user = await UserModel.create(newUser);
 
                         //generate Token
-                        const token = jwt.sign({user:{fullName: newUser.fullName, email: newUser.email}}, "ZomatoAPP");
+                        const token = user.generateJwtToken();
 
                         //return user
                         done(null, {user, token})
